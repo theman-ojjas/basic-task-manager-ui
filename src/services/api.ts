@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { TaskItem } from '../types/TaskItem';
 
-const baseURL = 'http://localhost:5023/api'; 
+const baseURL =
+  process.env.REACT_APP_API_URL ??
+  'https://basic-task-manager-server-1.onrender.com/api';
+
 
 export const api = {
     getTasks: async () => {
@@ -23,3 +26,4 @@ export const api = {
         await axios.delete(`${baseURL}/tasks/${id}`);
     }
 };
+
